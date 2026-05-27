@@ -2,20 +2,22 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5T2JHZV6');</script>
+  <!-- End Google Tag Manager -->
   <title>Cãopanheiros – Clínica Veterinária em Maringá</title>
   <meta name="description" content="Clínica Veterinária Cãopanheiros em Maringá. Consultas, cirurgias, exames, vacinação e emergência 24h. Atendimento que nasceu do amor." />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --principal: #006D77;
-      --principal-escuro: #004f57;
-      --principal-suave: #edf6f7;
-      --acento: #E29578;
-      --acento-hover: #c97a5e;
-      --verde: #22C55E;
-      --verde-hover: #16a34a;
+      --azul-marca: #006D77;
+      --azul-claro: #004f57;
+      --azul-suave: #edf6f7;
+      --verde-wpp: #22C55E;
+      --verde-wpp-hover: #16a34a;
+      --laranja: #E29578;
       --texto: #111;
       --cinza: #6b7280;
       --cinza-claro: #f4f4f5;
@@ -24,22 +26,25 @@
     }
 
     html { scroll-behavior: smooth; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
       color: var(--texto);
       background: var(--branco);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* ── TOPO ── */
+    /* —— TOPO —— */
     .topo {
-      background: var(--principal);
-      color: rgba(255,255,255,0.92);
+      background: var(--azul-marca);
+      color: rgba(255,255,255,0.9);
       text-align: center;
       padding: 9px 20px;
       font-size: 13px;
       font-weight: 500;
     }
+
     .topo-dot {
       display: inline-block;
       width: 7px; height: 7px;
@@ -49,525 +54,907 @@
       vertical-align: middle;
       animation: pulse 2s infinite;
     }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
-    /* ── NAV ── */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.4; }
+    }
+
+    /* —— NAV —— */
     nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 48px;
+      padding: 14px 48px;
       border-bottom: 1px solid var(--borda);
       background: var(--branco);
       position: sticky;
       top: 0;
       z-index: 100;
     }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-nome { font-size: 20px; font-weight: 900; color: var(--principal); letter-spacing: -0.5px; }
-    .nav-badge {
-      font-size: 11px; font-weight: 600;
-      color: var(--principal); background: var(--principal-suave);
-      border-radius: 999px; padding: 3px 10px;
-    }
-    .nav-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--verde); color: white;
-      font-size: 14px; font-weight: 700;
-      padding: 10px 22px; border-radius: 999px;
-      text-decoration: none; transition: all 0.2s;
-    }
-    .nav-btn:hover { background: var(--verde-hover); transform: translateY(-1px); }
-    .nav-btn svg { width: 16px; height: 16px; fill: white; }
 
-    /* ── HERO ── */
-    .hero {
-      padding: 80px 48px;
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
     }
-    .hero-nome {
-      font-size: 64px;
+
+    .nav-nome {
+      font-size: 17px;
       font-weight: 900;
-      color: var(--principal);
-      letter-spacing: -2px;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .hero h1 {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--texto);
+      color: var(--azul-marca);
       letter-spacing: -0.5px;
+    }
+
+    .nav-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--azul-marca);
+      background: var(--azul-suave);
+      border-radius: 999px;
+      padding: 3px 10px;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--verde-wpp);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .nav-btn:hover { background: var(--verde-wpp-hover); transform: translateY(-1px); }
+    .nav-btn svg { width: 16px; height: 16px; fill: white; flex-shrink: 0; }
+
+    /* —— HERO —— */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 72px 24px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(135deg, #004f57 0%, #006D77 50%, #00959f 100%);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(255,255,255,0.96) 0%, rgba(237,246,247,0.93) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-clinica-nome {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--azul-marca);
+      letter-spacing: 3px;
+      text-transform: uppercase;
       margin-bottom: 12px;
     }
+
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--texto);
+      letter-spacing: -1.5px;
+      line-height: 1.08;
+      margin-bottom: 28px;
+      margin-top: 4px;
+    }
+
+    .hero h1 span { color: var(--azul-marca); }
+
     .hero-sub {
       font-size: 17px;
       color: var(--cinza);
       line-height: 1.65;
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
-    .hero-local {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--cinza-claro); border-radius: 999px;
-      padding: 8px 18px; font-size: 14px;
-      color: var(--cinza); margin-bottom: 40px; font-weight: 500;
-    }
-    .hero-local strong { color: var(--principal); }
-    .hero-btns {
-      display: flex; align-items: center; justify-content: center;
-      gap: 12px; flex-wrap: wrap;
-    }
-    .btn-wpp {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--verde); color: white;
-      font-size: 16px; font-weight: 700;
-      padding: 16px 32px; border-radius: 999px;
-      text-decoration: none; transition: all 0.2s;
-      box-shadow: 0 4px 16px rgba(34,197,94,0.35);
-    }
-    .btn-wpp:hover { background: var(--verde-hover); transform: translateY(-2px); }
-    .btn-wpp svg { width: 20px; height: 20px; fill: white; }
-    .btn-ligar {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--principal); color: white;
-      font-size: 16px; font-weight: 700;
-      padding: 16px 32px; border-radius: 999px;
-      text-decoration: none; transition: all 0.2s;
-    }
-    .btn-ligar:hover { background: var(--principal-escuro); transform: translateY(-2px); }
 
-    /* ── BARRA STATS ── */
-    .stats-bar {
-      background: var(--principal);
+    .loc-texto {
+      background: white;
+      border: 1.5px solid #9ecdd1;
+      border-radius: 999px;
+      padding: 8px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--texto);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      display: inline-block;
+      white-space: nowrap;
+      margin-bottom: 28px;
+    }
+
+    .loc-texto strong { color: var(--azul-marca); }
+
+    .hero-btns {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .btn-wpp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--verde-wpp);
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      padding: 18px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      width: 100%;
+      transition: all 0.2s;
+      box-shadow: 0 4px 18px rgba(34,197,94,0.40);
+    }
+    .btn-wpp:hover { background: var(--verde-wpp-hover); transform: translateY(-2px); }
+    .btn-wpp svg { width: 22px; height: 22px; fill: white; flex-shrink: 0; }
+
+    .btn-ligar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--azul-marca);
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      padding: 18px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      width: 100%;
+      transition: all 0.2s;
+      box-shadow: 0 4px 18px rgba(0,109,119,0.25);
+    }
+    .btn-ligar:hover { background: var(--azul-claro); transform: translateY(-2px); }
+    .btn-ligar svg { width: 20px; height: 20px; flex-shrink: 0; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .hero-resposta {
+      font-size: 13px;
+      color: var(--cinza);
+      font-weight: 500;
+    }
+
+    /* —— STATS —— */
+    .stats {
+      border-top: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
       padding: 28px 48px;
     }
-    .stats-bar-inner {
-      max-width: 900px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: center;
-      gap: 48px; flex-wrap: wrap;
-    }
-    .stat-item { text-align: center; }
-    .stat-num { font-size: 32px; font-weight: 900; color: var(--acento); letter-spacing: -1px; line-height: 1; }
-    .stat-label { font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 4px; }
-    .stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.2); }
 
-    /* ── SEÇÕES ── */
-    .sec { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+    .stats-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 8px 16px;
+      border-right: 1px solid var(--borda);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num   { font-size: 26px; font-weight: 900; color: var(--azul-marca); letter-spacing: -1px; }
+    .stat-label { font-size: 12px; color: var(--cinza); margin-top: 4px; font-weight: 500; }
+
+    /* —— SEÇÕES —— */
+    .sec {
+      padding: 88px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
     .sec-tag {
-      display: inline-block; font-size: 11px; font-weight: 700;
-      color: var(--principal); text-transform: uppercase;
-      letter-spacing: 2px; margin-bottom: 12px;
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--azul-marca);
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      margin-bottom: 12px;
     }
-    .sec-titulo { font-size: 36px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 12px; }
-    .sec-titulo span { color: var(--principal); }
-    .sec-sub { font-size: 16px; color: var(--cinza); max-width: 480px; line-height: 1.65; margin-bottom: 48px; }
 
-    /* ── SERVIÇOS ── */
-    .servicos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .sec-titulo {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+      margin-bottom: 40px;
+    }
+
+    .sec-titulo span { color: var(--azul-marca); }
+
+    /* —— GALERIA —— */
+    .galeria-wrap {
+      background: var(--cinza-claro);
+      padding: 80px 48px;
+    }
+
+    .galeria-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .galeria-auto {
+      width: 100%;
+      max-width: 840px;
+      margin: 40px auto 0;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: var(--azul-suave);
+    }
+
+    .galeria-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.9s ease;
+    }
+    .galeria-slide.ativo { opacity: 1; }
+
+    /* —— SERVIÇOS —— */
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
     .servico-card {
-      background: var(--cinza-claro); border-radius: 20px;
-      padding: 28px 24px; transition: all 0.2s;
-      border: 1.5px solid transparent;
+      background: var(--cinza-claro);
+      border-radius: 20px;
+      padding: 26px 22px;
+      transition: all 0.2s;
     }
-    .servico-card:hover { background: var(--principal-suave); border-color: #9ecdd1; transform: translateY(-3px); }
+
+    .servico-card:hover { background: var(--azul-suave); transform: translateY(-3px); }
+
     .servico-icone {
-      width: 48px; height: 48px; background: var(--principal-suave);
-      border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+      width: 44px; height: 44px;
+      background: var(--azul-suave);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
     }
-    .servico-icone svg { width: 24px; height: 24px; stroke: var(--principal); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .servico-card h3 { font-size: 15px; font-weight: 700; line-height: 1.4; margin-bottom: 6px; }
-    .servico-card p { font-size: 13px; color: var(--cinza); line-height: 1.5; }
 
-    /* ── POR QUE ── */
-    .sec-porque { background: var(--principal-suave); padding: 1px 0; }
-    .sec-porque-inner {
-      padding: 80px 48px; max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    .servico-icone svg {
+      width: 22px; height: 22px;
+      stroke: var(--azul-marca);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
+
+    .servico-card h3 { font-size: 15px; font-weight: 700; line-height: 1.4; }
+    .servico-card p  { font-size: 13px; color: var(--cinza); margin-top: 6px; line-height: 1.5; }
+
+    /* —— POR QUE —— */
+    .sec-porque {
+      padding: 88px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
     .motivos { display: flex; flex-direction: column; gap: 8px; }
+
     .motivo {
-      display: flex; align-items: flex-start; gap: 16px;
-      padding: 20px; border-radius: 16px;
-      background: white; border: 1px solid var(--borda); transition: all 0.2s;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 20px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      transition: all 0.2s;
     }
-    .motivo:hover { border-color: #9ecdd1; box-shadow: 0 4px 12px rgba(0,109,119,0.08); }
+
+    .motivo:hover { background: var(--azul-suave); border-color: #9ecdd1; }
+
     .motivo-num {
-      width: 36px; height: 36px; border-radius: 10px;
-      background: var(--principal); color: white;
-      font-size: 14px; font-weight: 800;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: var(--azul-marca);
+      color: white;
+      font-size: 14px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
+
     .motivo h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-    .motivo p { font-size: 13px; color: var(--cinza); line-height: 1.5; }
+    .motivo p  { font-size: 13px; color: var(--cinza); line-height: 1.5; }
 
-    /* ── DEPOIMENTOS ── */
-    .sec-depoi { background: var(--principal); padding: 80px 48px; color: white; }
-    .sec-depoi-inner { max-width: 1100px; margin: 0 auto; }
-    .sec-depoi .sec-tag { color: var(--acento); }
-    .sec-depoi .sec-titulo { color: white; }
+    /* —— DEPOIMENTOS —— */
+    .sec-depoi {
+      background: #edf6f7;
+      padding: 88px 0;
+    }
 
-    .carrossel-wrap { position: relative; margin-top: 48px; overflow: hidden; }
-    .carrossel-track { display: flex; gap: 16px; transition: transform 0.4s ease; }
-    .carrossel-slide { flex: 0 0 calc(33.33% - 11px); border-radius: 16px; }
-    .carrossel-slide img { width: 100%; border-radius: 16px; display: block; }
-    .carrossel-nav { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 32px; }
+    .sec-depoi-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+
+    .carrossel-wrap {
+      position: relative;
+      margin-top: 48px;
+      overflow: hidden;
+    }
+
+    .carrossel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+      cursor: grab;
+      user-select: none;
+    }
+    .carrossel-track.dragging { cursor: grabbing; transition: none; }
+
+    .carrossel-slide {
+      flex: 0 0 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 0 48px;
+    }
+
+    .review-img-card {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .review-img-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+      display: block;
+      pointer-events: none;
+    }
+
+    .carrossel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
     .carrossel-btn {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.3);
-      color: white; font-size: 18px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: white;
+      border: 1.5px solid #e2e8f0;
+      color: var(--azul-marca);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
-    .carrossel-btn:hover { background: rgba(255,255,255,0.28); }
+    .carrossel-btn:hover { background: var(--azul-suave); }
+
     .carrossel-dots { display: flex; gap: 6px; }
-    .carrossel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: background 0.2s; }
-    .carrossel-dot.ativo { background: var(--acento); }
 
-    /* ── CTA ── */
-    .sec-cta { padding: 80px 48px; text-align: center; max-width: 640px; margin: 0 auto; }
-    .sec-cta h2 { font-size: 40px; font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; }
-    .sec-cta h2 span { color: var(--principal); }
-    .sec-cta p { font-size: 16px; color: var(--cinza); margin-bottom: 36px; line-height: 1.6; }
+    .carrossel-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .carrossel-dot.ativo { background: var(--azul-marca); }
 
-    /* ── LOCALIZAÇÃO ── */
-    .sec-local { background: var(--cinza-claro); padding: 80px 48px; }
+    /* —— CTA —— */
+    .sec-cta {
+      padding: 88px 48px;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .sec-cta h2 {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 36px;
+    }
+
+    .sec-cta h2 span { color: var(--azul-marca); }
+
+    /* —— LOCALIZAÇÃO —— */
+    .sec-local { background: var(--cinza-claro); padding: 88px 48px; }
+
     .sec-local-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: center;
     }
+
     .info-box {
-      background: white; border-radius: 20px; padding: 28px; margin-top: 32px;
-      display: flex; flex-direction: column; gap: 16px; border: 1px solid var(--borda);
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border: 1px solid var(--borda);
     }
+
     .info-linha { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--cinza); line-height: 1.5; }
     .info-linha .ico { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
     .info-linha strong { color: var(--texto); display: block; }
-    .mapa { border-radius: 24px; overflow: hidden; height: 340px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
 
-    /* ── FOOTER ── */
+    .mapa { border-radius: 24px; overflow: hidden; height: 340px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); cursor: pointer; }
+
+    /* —— FOOTER —— */
     footer {
-      border-top: 1px solid var(--borda); padding: 32px 48px;
-      display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+      border-top: 1px solid var(--borda);
+      padding: 32px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
     }
+
     .footer-texto { font-size: 13px; color: var(--cinza); }
     .footer-texto strong { color: var(--texto); }
 
-    /* ── BOTÃO FLUTUANTE ── */
+    /* —— FLUTUANTE —— */
     .wpp-float {
-      position: fixed; bottom: 28px; right: 28px;
-      width: 58px; height: 58px; background: var(--verde);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      position: fixed;
+      bottom: 28px; right: 28px;
+      width: 58px; height: 58px;
+      background: var(--verde-wpp);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       box-shadow: 0 6px 24px rgba(34,197,94,0.45);
-      text-decoration: none; z-index: 999; transition: all 0.2s;
+      text-decoration: none;
+      z-index: 999;
+      transition: all 0.2s;
     }
     .wpp-float:hover { transform: scale(1.1); }
     .wpp-float svg { width: 28px; height: 28px; fill: white; }
 
-    /* ── RESPONSIVO ── */
+    /* —— RESPONSIVO —— */
     @media (max-width: 900px) {
-      nav { padding: 14px 20px; }
-      .hero { padding: 48px 20px; }
-      .hero-nome { font-size: 44px; }
-      .stats-bar { padding: 24px 20px; }
-      .stat-divider { display: none; }
-      .sec { padding: 56px 20px; }
-      .servicos-grid { grid-template-columns: 1fr 1fr; }
-      .sec-porque-inner { grid-template-columns: 1fr; gap: 32px; padding: 56px 20px; }
-      .sec-depoi { padding: 56px 20px; }
-      .carrossel-slide { flex: 0 0 100%; }
+      nav { padding: 12px 20px; }
+      nav .nav-badge { display: none; }
+
+      .hero { padding: 52px 20px 44px; }
+      .hero h1 { font-size: 40px; letter-spacing: -1px; }
+      .hero-btns { max-width: 100%; }
+
+      .stats { padding: 0 20px; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat { padding: 20px 12px; border-right: 1px solid var(--borda); border-bottom: 1px solid var(--borda); }
+      .stat:nth-child(2) { border-right: none; }
+      .stat:nth-child(3) { border-bottom: none; }
+      .stat:nth-child(4) { border-right: none; border-bottom: none; }
+      .stat-num { font-size: 22px; }
+
+      .sec { padding: 56px 20px; text-align: center; }
+      .sec-titulo { font-size: 28px; }
+      .servicos-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .servico-card { text-align: center; }
+      .servico-icone { margin-left: auto; margin-right: auto; }
+
+      .galeria-wrap { padding: 56px 20px; }
+      .galeria-inner { text-align: center; }
+      .galeria-auto { aspect-ratio: 4 / 3; }
+
+      .sec-porque { grid-template-columns: 1fr; gap: 40px; padding: 56px 20px; text-align: center; }
+      .motivos { align-items: center; }
+      .motivo { text-align: left; max-width: 440px; width: 100%; }
+
+      .sec-depoi { padding: 56px 0; }
+      .sec-depoi-inner { padding: 0 20px; text-align: center; }
+      .carrossel-slide { padding: 0 16px; }
+      .review-img-card { max-width: 100%; }
+
       .sec-cta { padding: 56px 20px; }
+      .sec-cta h2 { font-size: 28px; }
+
       .sec-local { padding: 56px 20px; }
       .sec-local-inner { grid-template-columns: 1fr; gap: 32px; }
+      .sec-local-inner > div:first-child { text-align: center; }
+      .info-box { text-align: left; }
+      .mapa { height: 240px; }
+
       footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+
+      .wpp-float { width: 62px; height: 62px; bottom: 20px; right: 20px; }
+      .wpp-float svg { width: 30px; height: 30px; }
     }
-    @media (max-width: 480px) {
-      .hero-nome { font-size: 36px; }
+
+    @media (max-width: 420px) {
+      .hero h1 { font-size: 36px; }
       .servicos-grid { grid-template-columns: 1fr; }
-      .hero-btns { flex-direction: column; width: 100%; }
-      .btn-wpp, .btn-ligar { width: 100%; justify-content: center; }
+      .review-img-card { max-width: 100%; }
     }
   </style>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5T2JHZV6');</script>
-  <!-- End Google Tag Manager -->
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5T2JHZV6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5T2JHZV6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
-  <!-- TOPO -->
-  <div class="topo">
-    <span class="topo-dot"></span>
-    Atendimento disponível agora — Seg a Sex até 23h59 · Sáb e Dom até 19h
-  </div>
+<!-- TOPO -->
+<div class="topo">
+  <span class="topo-dot"></span>
+  Atendimento disponível <strong>agora</strong>
+</div>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">
-      <span class="nav-nome">Cãopanheiros</span>
-      <span class="nav-badge">Clínica Veterinária</span>
-    </a>
-    <a href="https://wa.me/5544998040709?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="nav-btn">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Falar agora
-    </a>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="nav-nome">Cãopanheiros</span>
+    <span class="nav-badge">Clínica Veterinária</span>
+  </a>
+  <a href="https://wa.me/5544998040709?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="nav-btn">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar agora
+  </a>
+</nav>
 
-  <!-- HERO -->
-  <div style="background: var(--branco);">
-    <div class="hero">
-      <div class="hero-nome">Cãopanheiros</div>
-      <h1>Clínica Veterinária em Maringá</h1>
-      <p class="hero-sub">Emergência 24h e atendimento rápido. Seu pet em boas mãos quando mais precisa.</p>
-      <div class="hero-local">📍 Localização privilegiada em <strong>Maringá</strong> com fácil acesso</div>
-      <div class="hero-btns">
-        <a href="https://wa.me/5544998040709?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="btn-wpp">
-          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Falar no WhatsApp
-        </a>
-        <a href="tel:5544998040709" class="btn-ligar">
-          <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Ligar agora
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats-bar">
-    <div class="stats-bar-inner">
-      <div class="stat-item">
-        <div class="stat-num">4.8 ★</div>
-        <div class="stat-label">Nota no Google</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <div class="stat-num">24h</div>
-        <div class="stat-label">Emergência disponível</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Atendimento humanizado</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <div class="stat-num">#1</div>
-        <div class="stat-label">Referência em Maringá</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SERVIÇOS -->
-  <div class="sec">
-    <span class="sec-tag">O que oferecemos</span>
-    <h2 class="sec-titulo">Cuidado completo para <span>o seu pet</span></h2>
-    <p class="sec-sub">Da consulta de rotina à emergência — temos tudo que seu companheiro precisa em um só lugar.</p>
-    <div class="servicos-grid">
-      <div class="servico-card">
-        <div class="servico-icone"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-        <h3>Consultas veterinárias</h3>
-        <p>Equipe especializada para cuidar da saúde do seu pet com atenção e carinho.</p>
-      </div>
-      <div class="servico-card">
-        <div class="servico-icone"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>Cirurgias eletivas e emergenciais</h3>
-        <p>Castrações, cesáreas, cirurgias oncológicas e muito mais com segurança total.</p>
-      </div>
-      <div class="servico-card">
-        <div class="servico-icone"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg></div>
-        <h3>Exames laboratoriais e de imagem</h3>
-        <p>Diagnósticos precisos com tecnologia moderna para o melhor tratamento.</p>
-      </div>
-      <div class="servico-card">
-        <div class="servico-icone"><svg viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7z"/></svg></div>
-        <h3>Vacinação</h3>
-        <p>Calendário vacinal completo para manter seu pet sempre protegido.</p>
-      </div>
-      <div class="servico-card">
-        <div class="servico-icone"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <h3>Atendimento de emergência</h3>
-        <p>Pronto-atendimento disponível para os momentos que não podem esperar.</p>
-      </div>
-      <div class="servico-card">
-        <div class="servico-icone"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-        <h3>Horário estendido</h3>
-        <p>Seg a Sex até 23h59 · Sáb, Dom e feriados até 19h. Flexibilidade para você.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- DEPOIMENTOS -->
-  <div class="sec-depoi">
-    <div class="sec-depoi-inner">
-      <span class="sec-tag">Avaliações reais</span>
-      <h2 class="sec-titulo">O que dizem <span style="color:var(--acento);">nossos clientes</span></h2>
-      <div class="carrossel-wrap">
-        <div class="carrossel-track" id="carrosselTrack">
-          <div class="carrossel-slide">
-            <img src="depoi1.jpg" alt="Avaliação Janaina" style="width:100%;border-radius:16px;display:block;">
-          </div>
-          <div class="carrossel-slide">
-            <img src="depoi2.jpg" alt="Avaliação Sueli Kaori" style="width:100%;border-radius:16px;display:block;">
-          </div>
-          <div class="carrossel-slide">
-            <img src="depoi3.jpg" alt="Avaliação Carolina Dias" style="width:100%;border-radius:16px;display:block;">
-          </div>
-          <div class="carrossel-slide">
-            <img src="depoi4.jpg" alt="Avaliação Anna Beatriz" style="width:100%;border-radius:16px;display:block;">
-          </div>
-        </div>
-        <div class="carrossel-nav">
-          <button class="carrossel-btn" onclick="moverCarrossel(-1)">&#8592;</button>
-          <div class="carrossel-dots">
-            <div class="carrossel-dot ativo" onclick="irParaSlide(0)"></div>
-            <div class="carrossel-dot" onclick="irParaSlide(1)"></div>
-            <div class="carrossel-dot" onclick="irParaSlide(2)"></div>
-            <div class="carrossel-dot" onclick="irParaSlide(3)"></div>
-          </div>
-          <button class="carrossel-btn" onclick="moverCarrossel(1)">&#8594;</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- EQUIPE -->
-  <div style="background:#f0fafa;padding:48px 20px;text-align:center;">
-    <span class="sec-tag" style="display:inline-block;margin-bottom:16px;">Nossa equipe</span>
-    <h2 class="sec-titulo" style="font-size:28px;margin-bottom:24px;">Quem cuida <span>do seu pet</span></h2>
-    <img src="equipe.jpg" alt="Equipe Cãopanheiros na frente da clínica" style="width:100%;max-width:520px;border-radius:20px;display:block;margin:0 auto;box-shadow:0 8px 32px rgba(0,109,119,0.15);">
-  </div>
-
-  <!-- POR QUE -->
-  <div class="sec-porque">
-    <div class="sec-porque-inner">
-      <div>
-        <span class="sec-tag">Por que a Cãopanheiros?</span>
-        <h2 class="sec-titulo" style="font-size:32px;">Amor pelo que faz.<br/><span>Confiança que você sente.</span></h2>
-        <p class="sec-sub" style="margin-bottom:0;">"Atendimento que nasceu do amor. Cresceu pela confiança." — Cada pet que entra aqui é tratado como único.</p>
-      </div>
-      <div class="motivos">
-        <div class="motivo">
-          <div class="motivo-num">01</div>
-          <div><h4>Atendimento humanizado</h4><p>Seu pet tratado com respeito, paciência e dedicação real — do jeito que merece.</p></div>
-        </div>
-        <div class="motivo">
-          <div class="motivo-num">02</div>
-          <div><h4>Horário estendido e flexível</h4><p>Até 23h59 durante a semana. Para você que trabalha e precisa de horário acessível.</p></div>
-        </div>
-        <div class="motivo">
-          <div class="motivo-num">03</div>
-          <div><h4>Emergência disponível 24h</h4><p>Nos momentos críticos, estamos prontos para cuidar do seu companheiro.</p></div>
-        </div>
-        <div class="motivo">
-          <div class="motivo-num">04</div>
-          <div><h4>Estrutura completa em Maringá</h4><p>Cirurgias, exames, vacinação e consultas — tudo em um só lugar.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CTA -->
-  <div class="sec-cta">
-    <h2>A saúde do seu pet <span>não pode esperar.</span></h2>
-    <p>Entre em contato agora e receba atendimento imediato da nossa equipe.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-clinica-nome">Cãopanheiros</p>
+    <h1>Clínica Veterinária <span>em Maringá</span></h1>
+    <p class="hero-sub">Emergência 24h e atendimento rápido. Seu pet em boas mãos quando mais precisa.</p>
+    <div class="loc-texto">📍 <strong>Localização Privilegiada</strong> em Maringá/PR</div>
+    <div class="hero-btns">
       <a href="https://wa.me/5544998040709?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="btn-wpp">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Falar no WhatsApp
       </a>
       <a href="tel:5544998040709" class="btn-ligar">
-        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Ligar agora
+      </a>
+      <p class="hero-resposta">⚡ Resposta em 2 minutos</p>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">4.8 ⭐</div>
+      <div class="stat-label">Nota no Google</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24h</div>
+      <div class="stat-label">Emergência disponível</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Atendimento humanizado</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">#1</div>
+      <div class="stat-label">Referência em Maringá</div>
+    </div>
+  </div>
+</div>
+
+<!-- DEPOIMENTOS -->
+<div class="sec-depoi">
+  <div class="sec-depoi-inner">
+    <span class="sec-tag">Avaliações reais</span>
+    <h2 class="sec-titulo" style="font-size:32px;">O que dizem <span>nossos clientes</span></h2>
+    <div class="carrossel-wrap">
+      <div class="carrossel-track" id="carrosselTrack">
+        <div class="carrossel-slide">
+          <div class="review-img-card">
+            <img src="depoi1.jpg" alt="Avaliação Janaina" loading="lazy" />
+          </div>
+        </div>
+        <div class="carrossel-slide">
+          <div class="review-img-card">
+            <img src="depoi2.jpg" alt="Avaliação Sueli Kaori" loading="lazy" />
+          </div>
+        </div>
+        <div class="carrossel-slide">
+          <div class="review-img-card">
+            <img src="depoi3.jpg" alt="Avaliação Carolina Dias" loading="lazy" />
+          </div>
+        </div>
+        <div class="carrossel-slide">
+          <div class="review-img-card">
+            <img src="depoi4.jpg" alt="Avaliação Anna Beatriz" loading="lazy" />
+          </div>
+        </div>
+      </div>
+      <div class="carrossel-nav">
+        <button class="carrossel-btn" onclick="moverCarrossel(-1)" aria-label="Anterior">&#8592;</button>
+        <div class="carrossel-dots">
+          <div class="carrossel-dot ativo" onclick="irParaSlide(0)"></div>
+          <div class="carrossel-dot" onclick="irParaSlide(1)"></div>
+          <div class="carrossel-dot" onclick="irParaSlide(2)"></div>
+          <div class="carrossel-dot" onclick="irParaSlide(3)"></div>
+        </div>
+        <button class="carrossel-btn" onclick="moverCarrossel(1)" aria-label="Próximo">&#8594;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GALERIA -->
+<div class="galeria-wrap">
+  <div class="galeria-inner">
+    <span class="sec-tag">Nossa clínica</span>
+    <h2 class="sec-titulo">Estrutura pensada <span>para eles</span></h2>
+    <div class="galeria-auto">
+      <img src="equipe.jpg" alt="Equipe Cãopanheiros na frente da clínica" class="galeria-slide ativo" loading="lazy" />
+    </div>
+  </div>
+</div>
+
+<!-- SERVIÇOS -->
+<div class="sec">
+  <span class="sec-tag">O que oferecemos</span>
+  <h2 class="sec-titulo">Cuidado completo para <span>o seu pet</span></h2>
+  <div class="servicos-grid">
+    <div class="servico-card">
+      <div class="servico-icone">
+        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h3>Consultas veterinárias</h3>
+      <p>Equipe especializada para cuidar da saúde do seu pet com atenção e carinho.</p>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icone">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Cirurgias eletivas e emergenciais</h3>
+      <p>Castrações, cesáreas, cirurgias oncológicas e muito mais com segurança total.</p>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icone">
+        <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
+      </div>
+      <h3>Exames laboratoriais e de imagem</h3>
+      <p>Diagnósticos precisos com tecnologia moderna para o melhor tratamento.</p>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icone">
+        <svg viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7z"/></svg>
+      </div>
+      <h3>Vacinação</h3>
+      <p>Calendário vacinal completo para manter seu pet sempre protegido.</p>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icone">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>Atendimento de emergência</h3>
+      <p>Pronto-atendimento disponível para os momentos que não podem esperar.</p>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icone">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h3>Horário estendido</h3>
+      <p>Seg a Sex até 23h59 · Sáb, Dom e feriados até 19h. Flexibilidade para você.</p>
+    </div>
+  </div>
+</div>
+
+<!-- POR QUE -->
+<div style="background: var(--cinza-claro); padding: 1px 0;">
+  <div class="sec-porque">
+    <div>
+      <span class="sec-tag">Por que a Cãopanheiros?</span>
+      <h2 class="sec-titulo" style="font-size:32px;">Amor pelo que faz.<br /><span>Confiança que você sente.</span></h2>
+      <p style="font-size:15px;color:var(--cinza);line-height:1.65;">"Atendimento que nasceu do amor. Cresceu pela confiança." — Cada pet que entra aqui é tratado como único.</p>
+    </div>
+    <div class="motivos">
+      <div class="motivo">
+        <div class="motivo-num">01</div>
+        <div>
+          <h4>Atendimento humanizado</h4>
+          <p>Seu pet tratado com respeito, paciência e dedicação real — do jeito que merece.</p>
+        </div>
+      </div>
+      <div class="motivo">
+        <div class="motivo-num">02</div>
+        <div>
+          <h4>Horário estendido e flexível</h4>
+          <p>Até 23h59 durante a semana. Para você que trabalha e precisa de horário acessível.</p>
+        </div>
+      </div>
+      <div class="motivo">
+        <div class="motivo-num">03</div>
+        <div>
+          <h4>Emergência disponível 24h</h4>
+          <p>Nos momentos críticos, estamos prontos para cuidar do seu companheiro.</p>
+        </div>
+      </div>
+      <div class="motivo">
+        <div class="motivo-num">04</div>
+        <div>
+          <h4>Estrutura completa em Maringá</h4>
+          <p>Cirurgias, exames, vacinação e consultas — tudo em um só lugar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="sec-cta">
+  <h2>A saúde do seu pet <span>não pode esperar.</span></h2>
+  <a href="https://wa.me/5544998040709?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="btn-wpp" style="max-width:420px;margin:0 auto;">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar no WhatsApp
+  </a>
+  <a href="tel:5544998040709" class="btn-ligar" style="max-width:420px;margin:12px auto 0;">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Ligar agora
+  </a>
+</div>
+
+<!-- LOCALIZAÇÃO -->
+<div class="sec-local">
+  <div class="sec-local-inner">
+    <div>
+      <span class="sec-tag">Onde estamos</span>
+      <h2 class="sec-titulo" style="font-size:32px;">Localização <span>privilegiada</span><br />em Maringá</h2>
+      <div class="info-box">
+        <div class="info-linha">
+          <span class="ico">📍</span>
+          <div>
+            <strong>Endereço</strong>
+            Rua Herminio Girardi, 1001 – Conj. Herman Morais de Barros<br/>Maringá – PR
+          </div>
+        </div>
+        <div class="info-linha">
+          <span class="ico">🕐</span>
+          <div>
+            <strong>Horário</strong>
+            Seg a Sex: 6h às 23h59 · Sáb, Dom e feriados: 7h às 19h<br/>Emergência 24h
+          </div>
+        </div>
+      </div>
+      <a href="https://wa.me/5544998040709?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="btn-wpp" style="margin-top:24px;font-size:15px;padding:14px 24px;width:100%;max-width:300px;">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar agora
+      </a>
+      <a href="tel:5544998040709" class="btn-ligar" style="margin-top:12px;font-size:15px;padding:14px 24px;width:100%;max-width:300px;">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         Ligar agora
       </a>
     </div>
-  </div>
-
-  <!-- LOCALIZAÇÃO -->
-  <div class="sec-local">
-    <div class="sec-local-inner">
-      <div>
-        <span class="sec-tag">Onde estamos</span>
-        <h2 class="sec-titulo" style="font-size:32px;">Localização <span>privilegiada</span><br/>em Maringá</h2>
-        <div class="info-box">
-          <div class="info-linha">
-            <span class="ico">📍</span>
-            <div><strong>Endereço</strong>Rua Herminio Girardi, 1001 – Conj. Herman Morais de Barros<br/>Maringá – PR</div>
-          </div>
-          <div class="info-linha">
-            <span class="ico">🕐</span>
-            <div><strong>Horário</strong>Seg a Sex: 6h às 23h59 · Sáb, Dom e feriados: 7h às 19h<br/>Emergência 24h</div>
-          </div>
-          <div class="info-linha">
-            <span class="ico">📞</span>
-            <div><strong>WhatsApp</strong>(44) 99804-0709</div>
-          </div>
-        </div>
-        <a href="https://wa.me/5544998040709?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="btn-wpp" style="margin-top:24px;font-size:15px;padding:14px 28px;">
-          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Falar agora
-        </a>
-      </div>
-      <div class="mapa" id="mapaWrap" style="cursor:pointer;" onclick="carregarMapa()">
-        <div id="mapaPlaceholder" style="width:100%;height:100%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;border-radius:24px;">
-          <span style="font-size:32px;">📍</span>
-          <span style="font-size:14px;font-weight:600;color:#475569;">Clique para ver no mapa</span>
-        </div>
-      </div>
+    <div class="mapa">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.1854878799304!2d-51.9442978!3d-23.381506100000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ecd6ab079c3d93%3A0xae59abb2ac4ee0ec!2sC%C3%A3opanheiros%20Cl%C3%ADnica%20Veterin%C3%A1ria%20em%20Maring%C3%A1!5e0!3m2!1spt-BR!2sbr!4v1779891599940!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <span style="font-size:20px;font-weight:900;color:var(--principal);">Cãopanheiros</span>
-    <div class="footer-texto">
-      <strong>Clínica Veterinária Cãopanheiros</strong> · Rua Herminio Girardi, 1001 – Maringá – PR<br/>
-      Atendimento que nasceu do amor. Cresceu pela confiança.
-    </div>
-    <a href="https://wa.me/5544998040709?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="nav-btn">Falar no WhatsApp</a>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <span style="font-size:20px;font-weight:900;color:var(--azul-marca);letter-spacing:-0.5px;">Cãopanheiros</span>
+  <div class="footer-texto">
+    <strong>Clínica Veterinária Cãopanheiros</strong> · Rua Herminio Girardi, 1001 – Maringá – PR<br />
+    Atendimento que nasceu do amor. Cresceu pela confiança.
+  </div>
+  <a href="https://wa.me/5544998040709?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="nav-btn">Falar no WhatsApp</a>
+</footer>
 
-  <!-- BOTÃO FLUTUANTE -->
-  <a href="https://wa.me/5544998040709?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="wpp-float" title="WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
+<!-- BOTÃO FLUTUANTE -->
+<a href="https://wa.me/5544998040709?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="wpp-float" title="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
-  <script>
-    function carregarMapa() {
-      var wrap = document.getElementById('mapaWrap');
-      var placeholder = document.getElementById('mapaPlaceholder');
-      if (placeholder) placeholder.remove();
-      wrap.onclick = null; wrap.style.cursor = 'default';
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659!2d-51.9!3d-23.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sRua+Herminio+Girardi%2C+1001+-+Maring%C3%A1!5e0!3m2!1spt-BR!2sbr!4v1620000000000';
-      iframe.allowFullscreen = true;
-      iframe.referrerPolicy = 'no-referrer-when-downgrade';
-      iframe.style.cssText = 'width:100%;height:100%;border:none;';
-      wrap.appendChild(iframe);
-    }
+<script>
+  /* Carrossel */
+  var slideAtual = 0;
+  var totalSlides = document.querySelectorAll('.carrossel-slide').length;
 
-    var slideAtual = 0;
-    var totalSlides = document.querySelectorAll('.carrossel-slide').length;
-    function atualizarCarrossel() {
-      var track = document.getElementById('carrosselTrack');
-      var slideW = track.querySelector('.carrossel-slide').offsetWidth + 16;
-      track.style.transform = 'translateX(-' + (slideAtual * slideW) + 'px)';
-      document.querySelectorAll('.carrossel-dot').forEach(function(d, i) {
-        d.classList.toggle('ativo', i === slideAtual);
-      });
-    }
-    function moverCarrossel(dir) { slideAtual = (slideAtual + dir + totalSlides) % totalSlides; atualizarCarrossel(); }
-    function irParaSlide(i) { slideAtual = i; atualizarCarrossel(); }
-    var startX = 0;
+  function atualizarCarrossel() {
     var track = document.getElementById('carrosselTrack');
-    track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; });
-    track.addEventListener('touchend', function(e) {
-      var diff = startX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) moverCarrossel(diff > 0 ? 1 : -1);
+    var slideW = track.querySelector('.carrossel-slide').offsetWidth;
+    track.style.transform = 'translateX(-' + (slideAtual * slideW) + 'px)';
+    document.querySelectorAll('.carrossel-dot').forEach(function(d, i) {
+      d.classList.toggle('ativo', i === slideAtual);
     });
-  </script>
+  }
 
+  function moverCarrossel(dir) {
+    slideAtual = (slideAtual + dir + totalSlides) % totalSlides;
+    atualizarCarrossel();
+  }
+
+  function irParaSlide(i) {
+    slideAtual = i;
+    atualizarCarrossel();
+  }
+
+  var track = document.getElementById('carrosselTrack');
+
+  var touchStartX = 0;
+  track.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  track.addEventListener('touchend', function(e) {
+    var diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) moverCarrossel(diff > 0 ? 1 : -1);
+  });
+
+  var mouseStartX = 0, isDragging = false;
+  track.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    mouseStartX = e.clientX;
+    track.classList.add('dragging');
+  });
+  document.addEventListener('mouseup', function(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    track.classList.remove('dragging');
+    var diff = mouseStartX - e.clientX;
+    if (Math.abs(diff) > 40) moverCarrossel(diff > 0 ? 1 : -1);
+  });
+
+  setInterval(function() { moverCarrossel(1); }, 5000);
+  window.addEventListener('resize', atualizarCarrossel);
+</script>
 </body>
 </html>
