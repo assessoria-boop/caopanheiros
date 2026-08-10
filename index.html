@@ -3,9 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5T2JHZV6');</script>
+  <!-- Google Tag Manager (carregado após o load / primeira interação) -->
+  <script>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+      var carregado=false;
+      function carregarGTM(){
+        if(carregado) return; carregado=true;
+        var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+      }
+      /* Carrega 3s após o load (fora da janela crítica de renderização)
+         ou imediatamente na primeira interação, o que vier antes. */
+      function agendarGTM(){ setTimeout(carregarGTM,3000); }
+      if(d.readyState==='complete') agendarGTM();
+      else w.addEventListener('load',agendarGTM);
+      ['pointerdown','touchstart','keydown','scroll'].forEach(function(ev){
+        w.addEventListener(ev,carregarGTM,{once:true,passive:true});
+      });
+    })(window,document,'script','dataLayer','GTM-5T2JHZV6');
+  </script>
   <!-- End Google Tag Manager -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="preload" as="image" href="hero-1200.webp"
+        imagesrcset="hero-800.webp 800w, hero-1200.webp 1200w, hero-1600.webp 1600w"
+        imagesizes="100vw" fetchpriority="high" />
   <link rel="icon" type="image/webp" href="logo.webp" />
   <title>Cãopanheiros – Clínica Veterinária em Maringá</title>
   <meta name="description" content="Clínica Veterinária Cãopanheiros em Maringá. Consultas, cirurgias, exames, vacinação e emergência 24h. Atendimento que nasceu do amor." />
@@ -541,7 +565,37 @@
     .info-linha .ico { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
     .info-linha strong { color: var(--texto); display: block; }
 
-    .mapa { border-radius: 24px; overflow: hidden; height: 340px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); cursor: pointer; }
+    .mapa { border-radius: 24px; overflow: hidden; height: 340px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); cursor: pointer; position: relative; background: var(--azul-suave); }
+    .mapa iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+    .mapa-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-align: center;
+      padding: 24px;
+      background:
+        linear-gradient(rgba(237,246,247,0.6), rgba(237,246,247,0.6)),
+        repeating-linear-gradient(0deg, #dbeced 0 1px, transparent 1px 40px),
+        repeating-linear-gradient(90deg, #dbeced 0 1px, transparent 1px 40px),
+        var(--azul-suave);
+    }
+    .mapa-placeholder .pin { font-size: 30px; }
+    .mapa-placeholder strong { font-size: 15px; color: var(--texto); }
+    .mapa-placeholder span.end { font-size: 13px; color: var(--cinza); line-height: 1.5; }
+    .mapa-placeholder .cta {
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--azul-marca);
+      background: white;
+      border: 1px solid #9ecdd1;
+      border-radius: 999px;
+      padding: 7px 16px;
+    }
 
     /* —— FOOTER —— */
     footer {
@@ -659,7 +713,10 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-bg">
-    <img src="hero.webp" alt="" fetchpriority="high" decoding="sync" />
+    <img src="hero-1200.webp"
+         srcset="hero-800.webp 800w, hero-1200.webp 1200w, hero-1600.webp 1600w"
+         sizes="100vw"
+         width="1200" height="800" alt="" fetchpriority="high" />
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -712,27 +769,27 @@
       <div class="carrossel-track" id="carrosselTrack">
         <div class="carrossel-slide">
           <div class="review-img-card">
-            <img src="1.webp" alt="Avaliação 5 estrelas" loading="lazy" />
+            <img src="1.webp" alt="Avaliação 5 estrelas" width="500" height="591" loading="lazy" decoding="async" />
           </div>
         </div>
         <div class="carrossel-slide">
           <div class="review-img-card">
-            <img src="2.webp" alt="Avaliação 5 estrelas" loading="lazy" />
+            <img src="2.webp" alt="Avaliação 5 estrelas" width="500" height="591" loading="lazy" decoding="async" />
           </div>
         </div>
         <div class="carrossel-slide">
           <div class="review-img-card">
-            <img src="3.webp" alt="Avaliação 5 estrelas" loading="lazy" />
+            <img src="3.webp" alt="Avaliação 5 estrelas" width="500" height="591" loading="lazy" decoding="async" />
           </div>
         </div>
         <div class="carrossel-slide">
           <div class="review-img-card">
-            <img src="4.webp" alt="Avaliação 5 estrelas" loading="lazy" />
+            <img src="4.webp" alt="Avaliação 5 estrelas" width="500" height="591" loading="lazy" decoding="async" />
           </div>
         </div>
         <div class="carrossel-slide">
           <div class="review-img-card">
-            <img src="5.webp" alt="Avaliação 5 estrelas" loading="lazy" />
+            <img src="5.webp" alt="Avaliação 5 estrelas" width="500" height="591" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -886,8 +943,14 @@
         Ligar agora
       </a>
     </div>
-    <div class="mapa">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.1854878799304!2d-51.9442978!3d-23.381506100000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ecd6ab079c3d93%3A0xae59abb2ac4ee0ec!2sC%C3%A3opanheiros%20Cl%C3%ADnica%20Veterin%C3%A1ria%20em%20Maring%C3%A1!5e0!3m2!1spt-BR!2sbr!4v1779891599940!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="mapa" id="mapa" role="button" tabindex="0" aria-label="Abrir mapa da Cãopanheiros em Maringá"
+         data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.1854878799304!2d-51.9442978!3d-23.381506100000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ecd6ab079c3d93%3A0xae59abb2ac4ee0ec!2sC%C3%A3opanheiros%20Cl%C3%ADnica%20Veterin%C3%A1ria%20em%20Maring%C3%A1!5e0!3m2!1spt-BR!2sbr!4v1779891599940!5m2!1spt-BR!2sbr">
+      <div class="mapa-placeholder">
+        <span class="pin">📍</span>
+        <strong>Cãopanheiros Clínica Veterinária</strong>
+        <span class="end">Rua Herminio Girardi, 1001 – Maringá/PR</span>
+        <span class="cta">Ver no mapa</span>
+      </div>
     </div>
   </div>
 </div>
@@ -958,6 +1021,43 @@
 
   setInterval(function() { moverCarrossel(1); }, 5000);
   window.addEventListener('resize', atualizarCarrossel);
+
+  /* Mapa sob demanda — evita ~485 KB de JS do Google Maps no carregamento inicial */
+  (function() {
+    var mapa = document.getElementById('mapa');
+    if (!mapa) return;
+    var carregado = false;
+
+    function carregarMapa() {
+      if (carregado) return;
+      carregado = true;
+      var iframe = document.createElement('iframe');
+      iframe.src = mapa.getAttribute('data-src');
+      iframe.title = 'Mapa da Cãopanheiros Clínica Veterinária em Maringá';
+      iframe.loading = 'lazy';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      mapa.innerHTML = '';
+      mapa.appendChild(iframe);
+      mapa.removeAttribute('role');
+      mapa.removeAttribute('tabindex');
+      mapa.style.cursor = 'default';
+    }
+
+    mapa.addEventListener('click', carregarMapa);
+    mapa.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); carregarMapa(); }
+    });
+
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entradas) {
+        if (entradas[0].isIntersecting) { carregarMapa(); obs.disconnect(); }
+      }, { rootMargin: '400px' });
+      obs.observe(mapa);
+    } else {
+      window.addEventListener('load', carregarMapa);
+    }
+  })();
 </script>
 </body>
 </html>
