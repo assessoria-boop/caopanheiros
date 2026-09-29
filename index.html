@@ -921,6 +921,148 @@
     @keyframes h24-feixe { 0% { background-position: 100% 0; } 22% { background-position: 0 0; } 100% { background-position: 0 0; } }
     @keyframes h24-pulso { 0%, 6%, 18%, 100% { transform: none; filter: none; } 11% { transform: translateY(-4px) scale(1.05); filter: drop-shadow(0 0 12px rgba(255,255,255,.6)); } }
     @media (prefers-reduced-motion: reduce) { .hero-h1 .h24 { animation: none; } .hero-h1 .h24::after { display: none; } }
+    /* ── HERO CLARO E DOBRAS EM BRANCO/CINZA (pedido do cliente em 29/09/2026) ── */
+    .hero { background: #fff; }
+    .hero-arco { background: #A162070F; }
+    /* o arco atras do cachorro sai no celular (pedido do cliente em 29/09/2026) */
+    @media (max-width: 1023px) {
+      .hero-arco { display: none; }
+    }
+    .hero-barra div { color: var(--c-body); }
+    /* as duas primeiras linhas do H1 em bold; a linha da cidade fica normal (pedido do cliente em 29/09/2026) */
+    .hero-h1 { color: var(--c-ink); font-weight: 700; }
+    .hero-h1 .l3 { font-weight: 500; }
+    .hero-h1 .l2 { color: var(--c-brand); }
+    /* no claro sai o halo escuro e o feixe branco, que so faziam sentido sobre o fundo colorido */
+    .hero-h1 .h24 { color: #16A34A; text-shadow: none; }
+    .hero-h1 .h24::after { display: none; }
+    @keyframes h24-pulso { 0%, 6%, 18%, 100% { transform: none; filter: none; } 11% { transform: translateY(-4px) scale(1.05); filter: drop-shadow(0 6px 14px rgba(22,163,74,.45)); } }
+    /* nome gigante da marca atras da foto oculto nas duas larguras (pedido do cliente em 29/09/2026) */
+    .hero-gigante { display: none; }
+    .hero-sub { color: var(--c-body); font-weight: 600; }
+    .hero-apoio {
+      width: 330px; max-width: 100%;
+      text-align: center;
+      font-size: 14px; font-weight: 400; line-height: 22px;
+      color: var(--c-body);
+    }
+
+    /* servicos e etapas em cinza claro; contato e rodape ficam nas cores da marca (pedido do cliente em 29/09/2026) */
+    .sec-serv { background: #EDEDEB; }
+    /* o respiro antes das etapas fica fora da faixa cinza, para o cinza comecar junto do texto */
+    .sec-etapas { background: #EDEDEB; margin-top: 56px; padding-top: 36px; padding-bottom: 56px; }
+    @media (min-width: 1024px) { .sec-etapas { margin-top: 96px; padding-top: 60px; padding-bottom: 96px; } }
+
+    /* "caes" e "gatos" atras das fotos so no desktop (pedido do cliente em 29/09/2026) */
+    @media (max-width: 1023px) {
+      .pc .pc-gigante { display: none; }
+    }
+
+    /* a etiqueta dos cards de caes e gatos ficava presa a esquerda pelo align-self do CSS antigo (pedido do cliente em 29/09/2026) */
+    .pc .pc-tag { align-self: center; }
+
+    /* cabecalho da dobra de etapas centralizado no celular (pedido do cliente em 29/09/2026) */
+    @media (max-width: 1023px) {
+      .sec-etapas .car-cab { align-items: center; text-align: center; }
+      .sec-etapas .car-dir { align-items: center; }
+      .sec-etapas .car-h2 { align-items: center; }
+    }
+
+    .sec-etapas .cta-linha { margin-top: 36px; }
+    @media (min-width: 1024px) { .sec-etapas .cta-linha { margin-top: 48px; } }
+    /* todos os CTAs com o mesmo tamanho do botao do hero, independente do texto (pedido do cliente em 29/09/2026) */
+    .btn-marca, .cta-btn { width: 324px; max-width: 100%; height: 56px; padding: 0 20px; }
+    @media (min-width: 1024px) { .btn-marca, .cta-btn { width: 352px; height: 67px; padding: 0 34px; } }
+    /* botoes do fim das dobras no verde do WhatsApp; so o do card de contato segue como estava */
+    .btn-marca { background: var(--wpp); box-shadow: 0 10px 26px rgba(37,211,102,.45); }
+    .btn-marca:hover { box-shadow: 0 16px 34px rgba(37,211,102,.55); }
+
+    /* ── FAQ (pedido do cliente em 29/09/2026) ── */
+    .sec-faq { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 88px 16px 8px; background: #fff; }
+    .faq-cab { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+    .faq-h2 { display: flex; flex-direction: column; font-size: 30px; font-weight: 500; letter-spacing: -0.03em; line-height: 36px; color: var(--c-ink); }
+    .faq-h2 .c { color: var(--c-brand); }
+    .faq-lista { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 880px; }
+    .faq {
+      background: #F5F6F4;
+      border: 1px solid var(--c-border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: background .3s var(--ease), box-shadow .35s var(--ease), border-color .3s;
+    }
+    .faq:hover { border-color: var(--c-muted); }
+    .faq.aberta { background: #fff; box-shadow: 0 14px 34px rgba(28,25,20,.10); }
+    .faq-p {
+      display: flex; align-items: center; gap: 14px;
+      width: 100%;
+      padding: 16px 18px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .faq-ic {
+      display: flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: #fff; border: 1px solid var(--c-border); border-radius: 10px;
+      color: var(--c-brand);
+      transition: background .3s, color .3s;
+    }
+    .faq-ic svg { width: 17px; height: 17px; }
+    .faq.aberta .faq-ic { background: var(--c-brand); border-color: var(--c-brand); color: #fff; }
+    .faq-tit { flex: 1; min-width: 0; font-size: 15px; font-weight: 500; line-height: 22px; color: var(--c-ink); }
+    /* o "+" vira "−" quando a resposta abre */
+    .faq-mais { position: relative; width: 16px; height: 16px; flex-shrink: 0; }
+    .faq-mais::before, .faq-mais::after {
+      content: ''; position: absolute; left: 50%; top: 50%;
+      width: 14px; height: 2px; margin: -1px 0 0 -7px;
+      background: var(--c-brand); border-radius: 2px;
+      transition: transform .35s var(--ease);
+    }
+    .faq-mais::after { transform: rotate(90deg); }
+    .faq.aberta .faq-mais::after { transform: rotate(0); }
+    .faq-r { height: 0; overflow: hidden; transition: height .4s var(--ease); }
+    .faq-r p { padding: 0 18px 18px 70px; font-size: 13px; line-height: 21px; color: var(--c-body); }
+
+    @media (min-width: 1024px) {
+      .sec-faq { gap: 36px; padding: 80px 15px 8px; }
+      .faq-cab { gap: 14px; }
+      .faq-h2 { flex-direction: row; gap: 11px; font-size: 36px; letter-spacing: -0.015em; line-height: 44px; }
+      .faq-lista { gap: 12px; }
+      .faq-p { padding: 22px 26px; gap: 18px; }
+      .faq-ic { width: 44px; height: 44px; border-radius: 12px; }
+      .faq-ic svg { width: 19px; height: 19px; }
+      .faq-tit { font-size: 17px; line-height: 24px; }
+      .faq-r p { padding: 0 26px 24px 88px; font-size: 14px; line-height: 23px; }
+    }
+
+    /* barra do topo do hero oculta (pedido do cliente em 29/09/2026) */
+    .hero-barra { display: none; }
+    /* com a barra oculta, o menu precisa de uma folga ate o topo no celular */
+    @media (max-width: 1023px) {
+      .nav-wrap { padding-top: 16px; }
+    }
+
+    /* rodape: logo e WhatsApp lado a lado no celular (pedido do cliente em 29/09/2026) */
+    @media (max-width: 1023px) {
+      .rod-l1 { flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; }
+      .rod-logo { gap: 10px; font-size: 17px; line-height: 22px; }
+      .rod-logo .ic { width: 38px; height: 38px; }
+      .rod-wpp { align-items: flex-end; text-align: right; }
+      .rod-wpp b { font-size: 16px; line-height: 22px; }
+      .rod-wpp span { font-size: 12px; line-height: 16px; }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-sub { text-align: left; }
+      .hero-apoio { width: 400px; text-align: left; font-size: 13px; line-height: 24px; }
+    }
+
+    /* depoimentos com o texto centralizado tambem no desktop (pedido do cliente em 29/09/2026) */
+    @media (min-width: 1024px) {
+      .sec-aval .car-cab { flex-direction: column; align-items: center; gap: 18px; text-align: center; }
+      .sec-aval .car-dir { align-items: center; }
+      .sec-aval .car-h2 { justify-content: center; }
+      .sec-aval .car-p { width: auto; max-width: 620px; }
+    }
   </style>
 </head>
 <body>
@@ -999,9 +1141,10 @@
         <span class="l2">Veterinária <span class="h24" data-brilho="24h">24h</span></span>
         <span class="l3">em Maringá</span>
       </h1>
-      <p class="hero-sub">Cãopanheiros, localização privilegiada em Maringá/PR. Seu pet em boas mãos quando mais precisa.</p>
+      <h2 class="hero-sub">Cãopanheiros Hospital Veterinário - Emergência veterinária 24h em Maringá, para cães e gatos</h2>
+      <h3 class="hero-apoio">Cuidamos do seu pet com amor, atenção e paciência, com emergência disponível a qualquer hora do dia ou da noite.</h3>
       <a class="btn-wpp hero-cta" href="https://wa.me/554432220948?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>
-        <span class="lbl">ATENDIMENTO IMEDIATO</span>
+        <span class="lbl">SEJA ATENDIDO AGORA</span>
         <svg class="i-wpp"><use href="#i-wpp"/></svg>
       </a>
     </div>
@@ -1206,6 +1349,78 @@
     </div>
   </div>
   <div class="car-prog"><span></span></div>
+  <div class="cta-linha">
+    <a class="btn-marca" href="https://wa.me/554432220948?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>
+      <span class="lbl">Seja Atendido Agora</span>
+      <svg class="i-wpp"><use href="#i-wpp"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec-faq" id="faq">
+  <div class="faq-cab">
+    <div class="car-tag rv">dúvidas frequentes</div>
+    <h2 class="faq-h2 rv" style="--d:.08s"><span class="c">O que saber</span><span>antes de chegar</span></h2>
+  </div>
+  <div class="faq-lista" id="faqLista">
+    <div class="faq rv">
+      <button class="faq-p" type="button" aria-expanded="false">
+        <span class="faq-ic"><svg class="i"><use href="#i-relogio"/></svg></span>
+        <span class="faq-tit">Quais são os horários de atendimento da Cãopanheiros?</span>
+        <span class="faq-mais" aria-hidden="true"></span>
+      </button>
+      <div class="faq-r"><p>De segunda a sexta atendemos das 6h às 23h59 e, aos sábados, domingos e feriados, das 7h às 19h. A emergência fica disponível 24 horas.</p></div>
+    </div>
+    <div class="faq rv" style="--d:.06s">
+      <button class="faq-p" type="button" aria-expanded="false">
+        <span class="faq-ic"><svg class="i"><use href="#i-pulso"/></svg></span>
+        <span class="faq-tit">Quais animais são atendidos na clínica?</span>
+        <span class="faq-mais" aria-hidden="true"></span>
+      </button>
+      <div class="faq-r"><p>Atendemos cães e gatos em consultas, emergências, cirurgias, exames e vacinação.</p></div>
+    </div>
+    <div class="faq rv" style="--d:.12s">
+      <button class="faq-p" type="button" aria-expanded="false">
+        <span class="faq-ic"><svg class="i"><use href="#i-frasco"/></svg></span>
+        <span class="faq-tit">A clínica faz exames no próprio local?</span>
+        <span class="faq-mais" aria-hidden="true"></span>
+      </button>
+      <div class="faq-r"><p>Sim. Os exames laboratoriais e de imagem são feitos no mesmo endereço, na Rua Herminio Girardi, junto com as consultas, as cirurgias e a vacinação.</p></div>
+    </div>
+    <div class="faq rv" style="--d:.18s">
+      <button class="faq-p" type="button" aria-expanded="false">
+        <span class="faq-ic"><svg class="i"><use href="#i-raio"/></svg></span>
+        <span class="faq-tit">O que fazer quando o pet precisa de atendimento imediato?</span>
+        <span class="faq-mais" aria-hidden="true"></span>
+      </button>
+      <div class="faq-r"><p>Chame a equipe pelo WhatsApp e venha direto para a clínica. A resposta sai em cerca de 2 minutos e a emergência fica disponível 24 horas.</p></div>
+    </div>
+    <div class="faq rv" style="--d:.24s">
+      <button class="faq-p" type="button" aria-expanded="false">
+        <span class="faq-ic"><svg class="i"><use href="#i-esteto"/></svg></span>
+        <span class="faq-tit">Quando devo levar meu pet ao veterinário?</span>
+        <span class="faq-mais" aria-hidden="true"></span>
+      </button>
+      <div class="faq-r"><p>Além das consultas de rotina e do calendário de vacinas, procure atendimento sempre que notar mudança de apetite, apatia, vômito, dificuldade para respirar ou qualquer comportamento fora do normal. Na dúvida, fale com a nossa equipe.</p></div>
+    </div>
+    <div class="faq rv" style="--d:.30s">
+      <button class="faq-p" type="button" aria-expanded="false">
+        <span class="faq-ic"><svg class="i"><use href="#i-pin"/></svg></span>
+        <span class="faq-tit">Onde fica a Cãopanheiros e como chegar?</span>
+        <span class="faq-mais" aria-hidden="true"></span>
+      </button>
+      <div class="faq-r"><p>A clínica fica na Rua Herminio Girardi, 1001, Conj. Herman Morais de Barros, Maringá/PR. O mapa com a rota está na seção de contato, logo abaixo.</p></div>
+    </div>
+    <div class="faq rv" style="--d:.36s">
+      <button class="faq-p" type="button" aria-expanded="false">
+        <span class="faq-ic"><svg class="i"><use href="#i-chat"/></svg></span>
+        <span class="faq-tit">Preciso agendar a consulta?</span>
+        <span class="faq-mais" aria-hidden="true"></span>
+      </button>
+      <div class="faq-r"><p>Para consultas, é só chamar no WhatsApp e combinar o melhor horário. Emergências são atendidas a qualquer hora, sem agendamento.</p></div>
+    </div>
+  </div>
 </section>
 
 <!-- CTA FINAL -->
@@ -1520,6 +1735,54 @@
       if (s) io.observe(s);
     });
   })();
+
+  /* FAQ: abre uma resposta por vez, com a altura animada */
+  (function () {
+    var lista = document.getElementById('faqLista');
+    if (!lista) return;
+    var itens = [].slice.call(lista.querySelectorAll('.faq'));
+    function fecha(item) {
+      var r = item.querySelector('.faq-r');
+      r.style.height = r.scrollHeight + 'px';
+      requestAnimationFrame(function () { r.style.height = '0px'; });
+      item.classList.remove('aberta');
+      item.querySelector('.faq-p').setAttribute('aria-expanded', 'false');
+    }
+    function abre(item) {
+      var r = item.querySelector('.faq-r');
+      r.style.height = r.scrollHeight + 'px';
+      item.classList.add('aberta');
+      item.querySelector('.faq-p').setAttribute('aria-expanded', 'true');
+      r.addEventListener('transitionend', function fim(e) {
+        if (e.propertyName !== 'height') return;
+        r.style.height = 'auto';
+        r.removeEventListener('transitionend', fim);
+      });
+    }
+    itens.forEach(function (item) {
+      item.querySelector('.faq-p').addEventListener('click', function () {
+        var estavaAberta = item.classList.contains('aberta');
+        itens.forEach(function (o) { if (o.classList.contains('aberta')) fecha(o); });
+        if (!estavaAberta) abre(item);
+      });
+    });
+    window.addEventListener('resize', function () {
+      var aberta = lista.querySelector('.faq.aberta .faq-r');
+      if (aberta) aberta.style.height = 'auto';
+    });
+  })();
+</script>
+<!-- Perguntas frequentes para o Google (dados estruturados) -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Quais são os horários de atendimento da Cãopanheiros?","acceptedAnswer":{"@type":"Answer","text":"De segunda a sexta atendemos das 6h às 23h59 e, aos sábados, domingos e feriados, das 7h às 19h. A emergência fica disponível 24 horas."}},
+{"@type":"Question","name":"Quais animais são atendidos na clínica?","acceptedAnswer":{"@type":"Answer","text":"Atendemos cães e gatos em consultas, emergências, cirurgias, exames e vacinação."}},
+{"@type":"Question","name":"A clínica faz exames no próprio local?","acceptedAnswer":{"@type":"Answer","text":"Sim. Os exames laboratoriais e de imagem são feitos no mesmo endereço, na Rua Herminio Girardi, junto com as consultas, as cirurgias e a vacinação."}},
+{"@type":"Question","name":"O que fazer quando o pet precisa de atendimento imediato?","acceptedAnswer":{"@type":"Answer","text":"Chame a equipe pelo WhatsApp e venha direto para a clínica. A resposta sai em cerca de 2 minutos e a emergência fica disponível 24 horas."}},
+{"@type":"Question","name":"Quando devo levar meu pet ao veterinário?","acceptedAnswer":{"@type":"Answer","text":"Além das consultas de rotina e do calendário de vacinas, procure atendimento sempre que notar mudança de apetite, apatia, vômito, dificuldade para respirar ou qualquer comportamento fora do normal. Na dúvida, fale com a nossa equipe."}},
+{"@type":"Question","name":"Onde fica a Cãopanheiros e como chegar?","acceptedAnswer":{"@type":"Answer","text":"A clínica fica na Rua Herminio Girardi, 1001, Conj. Herman Morais de Barros, Maringá/PR. O mapa com a rota está na seção de contato, logo abaixo."}},
+{"@type":"Question","name":"Preciso agendar a consulta?","acceptedAnswer":{"@type":"Answer","text":"Para consultas, é só chamar no WhatsApp e combinar o melhor horário. Emergências são atendidas a qualquer hora, sem agendamento."}}
+]}
 </script>
 </body>
 </html>

@@ -73,3 +73,15 @@ Toda a copy vem da página atual. Adaptações para caber nos blocos das pranche
 
 ## Conferência local
 Abrindo o arquivo direto (`file://`) o Chrome bloqueia as fontes locais; para conferir, use um servidor local.
+
+## Pacote de 29/09/2026 (mesmo feito na Point Animal)
+Bloco de override no fim do `<style>`, com comentários "(pedido do cliente em 29/09/2026)". O CSS original não foi alterado.
+
+- **Hero claro:** fundo branco, H1 em preto com "Clínica"/"Veterinária 24h" em bold e "em Maringá" normal, "Veterinária" no mostarda da marca e "24h" em `#16A34A` (o verde do WhatsApp não tem contraste sobre o branco). Sem halo e sem o feixe branco. Nome gigante "Cãopanheiros/Maringá" oculto nas duas larguras; arco atrás da foto só no desktop; barra do topo oculta (com `padding-top: 16px` no menu do celular). A foto do hero é recortada (WebP com transparência), então funciona no branco.
+- **Textos do hero:** subtítulo virou `<h2>` ("Cãopanheiros Hospital Veterinário - Emergência veterinária 24h em Maringá, para cães e gatos" — termo invertido de propósito, e sem prometer 24h no geral, já que só a emergência é 24h) e abaixo um `<h3>` de apoio. Botão do hero: "SEJA ATENDIDO AGORA".
+- **Dobras:** serviços e etapas em cinza `#EDEDEB`; o respiro antes das etapas ficou fora do cinza (margin-top 56/96 px). Card de contato e rodapé seguem nas cores da marca.
+- **Botões:** todos os CTAs no verde do WhatsApp e do mesmo tamanho do hero (324x56 no celular, 352x67 no desktop). Novo botão "Seja Atendido Agora" no fim das etapas. O botão do card de contato continua branco; cabeçalho e flutuante não mudaram.
+- **FAQ:** nova dobra entre etapas e contato, com 7 perguntas em sanfona e o bloco FAQPage (schema.org) no fim do HTML. **Ao editar uma pergunta, atualizar nos dois lugares.** As respostas usam só o que já estava na página (horários, endereço, exames no mesmo endereço, resposta em 2 minutos).
+- **Alinhamentos:** a etiqueta dos cards de cães/gatos ficava presa à esquerda (o `align-self: flex-start` do CSS antigo); agora é `.pc .pc-tag { align-self: center; }`. Depoimentos centralizados também no desktop; no celular, palavras gigantes "cães"/"gatos" ocultas, cabeçalho das etapas centralizado e rodapé com logo e WhatsApp lado a lado.
+
+Conferido em 1440, 390 e 360 px: sem rolagem lateral, sem imagem quebrada, FAQ abrindo e fechando e todos os botões com a mesma medida.
