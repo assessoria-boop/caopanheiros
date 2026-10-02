@@ -934,7 +934,8 @@
     .hero-h1 .l3 { font-weight: 500; }
     .hero-h1 .l2 { color: var(--c-brand); }
     /* no claro sai o halo escuro e o feixe branco, que so faziam sentido sobre o fundo colorido */
-    .hero-h1 .h24 { color: #16A34A; text-shadow: none; }
+    /* o "24h" na mesma cor de "Veterinária" (pedido do cliente em 02/10/2026) */
+    .hero-h1 .h24 { color: var(--c-brand); text-shadow: none; }
     .hero-h1 .h24::after { display: none; }
     @keyframes h24-pulso { 0%, 6%, 18%, 100% { transform: none; filter: none; } 11% { transform: translateY(-4px) scale(1.05); filter: drop-shadow(0 6px 14px rgba(22,163,74,.45)); } }
     /* nome gigante da marca atras da foto oculto nas duas larguras (pedido do cliente em 29/09/2026) */
