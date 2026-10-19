@@ -85,3 +85,6 @@ Bloco de override no fim do `<style>`, com comentários "(pedido do cliente em 2
 - **Alinhamentos:** a etiqueta dos cards de cães/gatos ficava presa à esquerda (o `align-self: flex-start` do CSS antigo); agora é `.pc .pc-tag { align-self: center; }`. Depoimentos centralizados também no desktop; no celular, palavras gigantes "cães"/"gatos" ocultas, cabeçalho das etapas centralizado e rodapé com logo e WhatsApp lado a lado.
 
 Conferido em 1440, 390 e 360 px: sem rolagem lateral, sem imagem quebrada, FAQ abrindo e fechando e todos os botões com a mesma medida.
+
+## Internação 24h (19/10/2026)
+O que a página anunciava como 24h era a emergência; a pedido do cliente passou a ser a **internação**. Mudaram: meta description, barra do topo do hero, subtítulo (`h2`), card #1 do hero, pastilha e linha da dobra de serviços (nome e descrição), as duas respostas do FAQ e o bloco de contato. As respostas do FAQ foram atualizadas **nos dois lugares** (HTML e dados estruturados FAQPage). O H1 continua "Clínica / Veterinária 24h / em Maringá".
