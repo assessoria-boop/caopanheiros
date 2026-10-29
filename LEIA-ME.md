@@ -88,3 +88,10 @@ Conferido em 1440, 390 e 360 px: sem rolagem lateral, sem imagem quebrada, FAQ a
 
 ## Internação 24h (19/10/2026)
 O que a página anunciava como 24h era a emergência; a pedido do cliente passou a ser a **internação**. Mudaram: meta description, barra do topo do hero, subtítulo (`h2`), card #1 do hero, pastilha e linha da dobra de serviços (nome e descrição), as duas respostas do FAQ e o bloco de contato. As respostas do FAQ foram atualizadas **nos dois lugares** (HTML e dados estruturados FAQPage). O H1 continua "Clínica / Veterinária 24h / em Maringá".
+
+## 29/10/2026: SEO e botao de ligacao
+
+- Title, description, canonical e Open Graph no padrao "Clinica Veterinaria 24h em Maringa" (referencia: vetopet.com.br).
+- H2 do hero: "Caopanheiros Hospital Veterinario 24h - Veterinario em Maringa para Caes e Gatos".
+- Dados estruturados VeterinaryCare (endereco, telefone e horarios), alem do FAQPage.
+- Botao "LIGAR AGORA" (tel:+554432220948) abaixo do WhatsApp no hero e no card de contato.
